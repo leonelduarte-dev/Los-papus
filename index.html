@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f7f2">
+  <meta name="description" content="Registra baches, mide su tamaño y ayuda a priorizar reparaciones en tu comunidad.">
+  <title>Bachea — Reportes de baches</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <aside class="sidebar">
+    <a class="brand" href="#inicio" aria-label="Bachea, inicio"><span class="brand-mark"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3 19 11l8-3-4 8 6 6-9 1-4 7-4-8-9 1 5-7-4-8 9 3z"/></svg></span><span>bachea<span class="brand-period">.</span></span></a>
+    <div class="side-label">ESPACIO VECINAL</div>
+    <nav class="side-nav" aria-label="Navegación principal">
+      <a class="nav-item active" href="#inicio"><span class="nav-icon">▦</span> Panel general</a>
+      <a class="nav-item" href="#reportes"><span class="nav-icon">⌖</span> Reportes <span id="nav-count" class="nav-count">0</span></a>
+      <a class="nav-item" href="#registrar"><span class="nav-icon">＋</span> Registrar bache</a>
+    </nav>
+    <div class="side-bottom"><div class="community-icon">♡</div><div><strong>Tu comunidad importa</strong><p>Cada reporte ayuda a construir calles más seguras.</p></div></div>
+    <div class="sidebar-foot">HECHO PARA MEJORES CAMINOS <span>✳</span></div>
+  </aside>
+
+  <main class="main-content" id="inicio">
+    <header class="topbar"><div class="mobile-brand"><span class="brand-mark"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3 19 11l8-3-4 8 6 6-9 1-4 7-4-8-9 1 5-7-4-8 9 3z"/></svg></span>bachea<span class="brand-period">.</span></div><div class="topbar-note"><span class="live-dot"></span> Un pequeño reporte puede hacer una gran diferencia</div><a class="topbar-action" href="#registrar">＋ <span>Nuevo reporte</span></a></header>
+    <div class="page-wrap">
+      <section class="welcome"><div><div class="eyebrow"><span>✳</span> CALLES MÁS SEGURAS, ENTRE TODOS</div><h1>Tu calle, <span>en mejores manos.</span></h1><p>Reporta baches de tu zona. Con medidas y ubicación, las autoridades pueden priorizar dónde actuar.</p></div><div class="welcome-art" aria-hidden="true"><div class="sun"></div><div class="hill hill-back"></div><div class="hill hill-front"></div><div class="road"><i></i><i></i><i></i></div><div class="pin-art"><span>!</span></div></div></section>
+
+      <section class="stats-grid" aria-label="Resumen de reportes">
+        <article class="stat-card"><div class="stat-top"><span>Reportes registrados</span><span class="stat-icon icon-mint">⌖</span></div><div class="stat-value" id="stat-total">0</div><div class="stat-foot">en esta comunidad</div></article>
+        <article class="stat-card"><div class="stat-top"><span>Riesgo alto o crítico</span><span class="stat-icon icon-coral">⚑</span></div><div class="stat-value" id="stat-high">0</div><div class="stat-foot">requieren atención prioritaria</div></article>
+        <article class="stat-card"><div class="stat-top"><span>Superficie afectada</span><span class="stat-icon icon-blue">▧</span></div><div class="stat-value"><span id="stat-area">0</span><small>m²</small></div><div class="stat-foot">estimada según las medidas</div></article>
+      </section>
+
+      <section class="content-grid">
+        <div class="panel form-panel" id="registrar">
+          <div class="panel-heading"><div><div class="section-kicker">NUEVO REPORTE</div><h2>Cuéntanos sobre el bache</h2><p>Completa los datos para que podamos ubicarlo y evaluar su prioridad.</p></div><span class="heading-mark">✳</span></div>
+          <form id="report-form">
+            <div class="field-group"><label for="address">Ubicación o dirección <span class="required">*</span></label><div class="input-wrap"><span class="input-icon">⌖</span><input id="address" name="address" type="text" placeholder="Ej. Av. Central, frente al parque" required maxlength="140"></div><div class="field-hint">Sé lo más específico posible para encontrarlo.</div></div>
+            <div class="coordinates-row"><div class="field-group"><label for="latitude">Latitud <span class="optional">(opcional)</span></label><input id="latitude" name="latitude" type="number" step="any" placeholder="19.4326"></div><div class="field-group"><label for="longitude">Longitud <span class="optional">(opcional)</span></label><input id="longitude" name="longitude" type="number" step="any" placeholder="-99.1332"></div></div>
+            <button type="button" class="location-button" id="locate-button"><span>◎</span> Usar mi ubicación actual</button>
+            <div class="measure-header"><div><label>Medidas aproximadas</label><p>Usa una cinta métrica o estima el tamaño.</p></div><span class="unit-tag">CENTÍMETROS</span></div>
+            <div class="measure-grid"><div class="field-group"><label for="length">Largo <span class="required">*</span></label><div class="unit-input"><input id="length" name="length" type="number" min="1" max="10000" step="0.1" placeholder="0" required><span>cm</span></div></div><div class="field-group"><label for="width">Ancho <span class="required">*</span></label><div class="unit-input"><input id="width" name="width" type="number" min="1" max="10000" step="0.1" placeholder="0" required><span>cm</span></div></div><div class="field-group"><label for="depth">Profundidad <span class="required">*</span></label><div class="unit-input"><input id="depth" name="depth" type="number" min="0" max="1000" step="0.1" placeholder="0" required><span>cm</span></div></div></div>
+            <div class="risk-preview" id="risk-preview"><span class="risk-symbol">◉</span><div><strong id="risk-title">Riesgo por calcular</strong><span id="risk-description">Ingresa las medidas para estimar el nivel de riesgo.</span></div><span class="risk-arrow">↗</span></div>
+            <div class="field-group notes-field"><label for="notes">Detalles adicionales <span class="optional">(opcional)</span></label><textarea id="notes" name="notes" rows="3" maxlength="500" placeholder="¿Está cerca de una escuela? ¿Se llena de agua cuando llueve?"></textarea></div>
+            <button class="submit-button" type="submit">Registrar reporte <span>→</span></button>
+            <p class="privacy-note">Tus reportes se guardan en este dispositivo. No se envían a un servidor.</p>
+          </form>
+        </div>
+
+        <div class="panel reports-panel" id="reportes">
+          <div class="reports-heading"><div><div class="section-kicker">SEGUIMIENTO VECINAL</div><h2>Reportes recientes <span id="report-count" class="count-pill">0</span></h2></div><select id="risk-filter" aria-label="Filtrar reportes por riesgo"><option value="all">Todos los riesgos</option><option value="Crítico">Crítico</option><option value="Alto">Alto</option><option value="Medio">Medio</option><option value="Bajo">Bajo</option></select></div>
+          <div id="reports-list" class="reports-list"></div>
+          <div class="empty-state" id="empty-state"><div class="empty-illustration"><span>⌖</span><i></i></div><h3>Tu comunidad empieza aquí</h3><p>Aún no hay baches registrados. Agrega el primero y ayuda a que tu calle sea más segura.</p><a href="#registrar" class="empty-link">Registrar el primer bache <span>→</span></a></div>
+          <div class="list-footer" id="list-footer"><span>Los reportes más recientes aparecen primero.</span><button id="clear-button" type="button" class="clear-button">Borrar mis reportes</button></div>
+        </div>
+      </section>
+      <footer class="page-footer"><span>© 2026 Bachea. Cuidar nuestras calles empieza en comunidad.</span><span class="footer-heart">Hecho con <b>♥</b> para tu ciudad</span></footer>
+    </div>
+  </main>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>
